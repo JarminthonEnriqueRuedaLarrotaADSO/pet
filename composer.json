@@ -1,16 +1,16 @@
 {
-    "name": "chucho_y_asociados/mascotas",
+    "name": "adso/mascotas",
     "type": "project",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "ChuchoYAsociados\\Mascotas\\": "app/"
+            "adso\\Mascotas\\": "app/"
         }
     },
     "authors": [
         {
-            "name": "chucho sas",
-            "email": "chuchoasociads@gmail.com"
+            "name": "adso",
+            "email": "adso@gmail.com"
         }
     ],
     "minimum-stability": "beta",
