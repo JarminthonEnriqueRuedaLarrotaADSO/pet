@@ -15,6 +15,7 @@
     <?php echo $contend; ?>
     
     <script src="<?= URL ?>/assets/js/file.js"></script>
+    <script src="<?= URL ?>/assets/js/register.js"></script>
 </body>
 
 </html>

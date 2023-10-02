@@ -6,7 +6,7 @@
             <h1 class="title__main">Tu mejor amigo <span class="title__second">en casa!</span></h1>
         </div>
 
-        <form class="form" method="POST" action="<?= URL ?>/register/validate">
+        <form id="form" class="form" method="POST" action="<?= URL ?>/register/validate">
             <div class="form__inputContainer">
                 <input placeholder="Nombre Completo" id="name" type="text" class="form__input form-control " name="name" value=""  autocomplete="name" autofocus="">
                 <?php
@@ -56,7 +56,7 @@
             </div>
 
             <div class="form__inputContainer">
-                <button type="submit" class="form__input form__button">Register</button>
+                <button id="btnRegistrar" type="submit" class="form__input form__button">Register</button>
             </div>
 
             <div class="form__inputContainer">
