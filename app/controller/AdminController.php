@@ -117,13 +117,13 @@ class AdminController extends Controller
                 $errores['error_file'] = "el archivo tiene formato no permitido";
             }
             
-            $url_insert = dirname(__FILE__,3)."\\public\\assets\\images\\";
+            $url_insert = dirname(__FILE__,3)."\\public\\assets\\images\\pets\\";
             
             
             if(empty($errors)){
 
-                if(!file_exists("assets/images")){
-                    mkdir("assets/images", 0777, true);
+                if(!file_exists("assets/images/pets")){
+                    mkdir("assets/images/pets", 0777, true);
                 }
                 
                 chmod( $url_insert, 0777);

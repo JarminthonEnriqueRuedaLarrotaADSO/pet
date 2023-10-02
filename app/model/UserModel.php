@@ -44,4 +44,15 @@ class UserModel extends Model
    return $stm-> rowCount();
  }
 
+ function getEmail($correo)
+ {
+     $this->connection = $this->db->getConnection();
+     $sql = "SELECT email FROM users WHERE email = :correo";
+     $stm = $this->connection->prepare($sql);
+     $stm->bindValue(":correo", $correo);
+     $stm->execute();
+     return $stm->fetch();
+ }
+
+
 }

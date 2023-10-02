@@ -91,4 +91,34 @@ class RegisterController extends Controller
             header("Location:".URL."/register");
         }
     }
+    function email()
+    {
+        $response = array(
+            'status'    => false,
+            'data'      => false,
+            'message'   => 'Esta intentando acceder a informaión privada'
+        );
+        //Validamos que la solicitud sea por POST
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $request = json_decode(file_get_contents("php://input"));
+            //Tomamos el atributo correo que se envio codificado
+            //De igual forma pudo llegar otro atribuito o varios atributos
+            $email = $request->email;
+            //Consultamos con el modelo y pasamos el correo
+            $data = $this->model->getEmail($email);
+            echo($email);
+            //Preguntamos si nos llega algun dato de la consulta
+
+            if ($data) {
+                $response['status']  = 200;
+                $response['data']   = true;
+                $response['message'] = 'el correo se encuentra registrado';
+            } else {
+                $response['status'] = 200;
+                $response['message'] = 'estoy sobre escribiendo el mensaje';
+            }
+            //Codificamos la respuesta al cliente
+            echo json_encode($response, http_response_code($response['status']) );
+        }
+    }
 }

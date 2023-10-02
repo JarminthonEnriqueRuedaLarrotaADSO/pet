@@ -32,14 +32,17 @@ const validacion = async (e) => {
             }
             //Codificamos los datos
             const request_data = JSON.stringify(data)
+            
             try {
                 //Realizamos el envio a la ruta del controlador
-                let ajax = await fetch(url + '/register/validate', {
+                let ajax = await fetch(url + '/register/email', {
                     method: 'POST',
                     body: request_data
                 })
+                console.log(ajax);
                 //Respuesta servidor
                 let json = await ajax.json();
+
                 console.log(json);
                 //Validamos el codigo de respuesta
                 if (json.data) {
@@ -48,9 +51,10 @@ const validacion = async (e) => {
                         text: 'El correo no esta disponible',
                         icon: 'error',
                         confirmButtonText: 'Cerrar'
-                      })
+                    })
+                    console.log(json.data, "Error");
                 }else{
-
+                    console.log(json.data, "Error");
                 }
             } catch (err) {
                 let message = err.statusText || 'Ocurrio un error'
@@ -62,7 +66,7 @@ const validacion = async (e) => {
     }
 }
 
-const validacion2 = async (e) => {
+/* const validacion2 = async (e) => {
     //Validamos que el campo correo este lleno
     if (usuario.value != '') {
         //Validamos que el formato del correo sea valido
@@ -100,7 +104,7 @@ const validacion2 = async (e) => {
     } else {
         alert("Por favor, escribe un correo electrónico válido");
     }
-}
+} */
 
 //Eventos del formulario
 email.addEventListener('blur', validacion);
