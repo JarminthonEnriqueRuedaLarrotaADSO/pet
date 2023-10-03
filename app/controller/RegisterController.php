@@ -102,11 +102,11 @@ class RegisterController extends Controller
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $request = json_decode(file_get_contents("php://input"));
             //Tomamos el atributo correo que se envio codificado
-            //De igual forma pudo llegar otro atribuito o varios atributos
+            //De igual forma pudo llegar otro atribuito o varios atributos{
+            
             $email = $request->email;
             //Consultamos con el modelo y pasamos el correo
             $data = $this->model->getEmail($email);
-            echo($email);
             //Preguntamos si nos llega algun dato de la consulta
 
             if ($data) {

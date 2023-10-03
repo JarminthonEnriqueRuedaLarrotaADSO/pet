@@ -1,5 +1,5 @@
 //Url base del proyecto
-const url = "http://localhost/mascotas"
+const url = "http://localhost/pets2"
 //Atributos del formulario
 const email = document.getElementById('email')
 let usuario = document.getElementById('first_name');
@@ -32,7 +32,8 @@ const validacion = async (e) => {
             }
             //Codificamos los datos
             const request_data = JSON.stringify(data)
-            
+            console.log(request_data);
+            console.log(email.value);
             try {
                 //Realizamos el envio a la ruta del controlador
                 let ajax = await fetch(url + '/register/email', {
@@ -44,20 +45,18 @@ const validacion = async (e) => {
                 let json = await ajax.json();
 
                 console.log(json);
+                console.log(json.data);
                 //Validamos el codigo de respuesta
                 if (json.data) {
-                    Swal.fire({
-                        title: 'Error!',
-                        text: 'El correo no esta disponible',
-                        icon: 'error',
-                        confirmButtonText: 'Cerrar'
-                    })
+                    alert("El correo ya esta registrado")
                     console.log(json.data, "Error");
                 }else{
                     console.log(json.data, "Error");
                 }
             } catch (err) {
                 let message = err.statusText || 'Ocurrio un error'
+                console.log(message);
+                console.error(err);
             } finally {
             }
         } else {
