@@ -49,8 +49,7 @@
                         <option value="<?=$value["id"]?>"><?=$value["name"]?></option>
                         <?php
                     }
-                    ?>
-                   
+                    ?>                   
                 </select>
             </div>
                 <?php

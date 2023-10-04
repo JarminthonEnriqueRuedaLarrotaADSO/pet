@@ -1,5 +1,4 @@
 <main>
-<p>estamos en gato</p>
     <section class="container second__container">
 
         <div class="headerTitle">

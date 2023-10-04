@@ -44,15 +44,40 @@ class UserModel extends Model
    return $stm-> rowCount();
  }
 
- function getEmail($correo)
- {
-     $connection = $this->db->getConnection();
-     $sql = "SELECT email FROM users WHERE email = :correo";
-     $stm = $connection->prepare($sql);
-     $stm->bindValue(":correo", $correo);
-     $stm->execute();
-     return $stm->fetch();
- }
+function getEmail($correo)
+{
+   $connection = $this->db->getConnection();
+   $sql = "SELECT email FROM users WHERE email = :correo";
+   $stm = $connection->prepare($sql);
+   $stm->bindValue(":correo", $correo);
+   $stm->execute();
+   return $stm->fetch();
+}
+
+function validateEmail ($email) {
+   $sql = "SELECT id, email FROM users WHERE email = :correo";
+   $connection = $this->db->getConnection();
+   $stm = $connection->prepare($sql);
+   $stm->bindValue(":correo", $email);
+   $stm->execute();
+   return $stm->fetch();
+}
+
+function updatePassword($id, $password)
+{   
+   //die($id);
+   $password = hash_hmac("sha512", $password, MASTER);
+   $password = substr($password, 0, 50);
+   
+   $sql = "UPDATE users SET password = :clave WHERE id = :id";
+   $connection = $this->db->getConnection();
+   $stm = $connection->prepare($sql);
+   $stm->bindValue(":clave", $password);
+   $stm->bindValue(":id", $id);
+
+   return $stm->execute();
+}
+
 
 
 }

@@ -3,6 +3,7 @@
 namespace adso\Mascotas\controller;
 
 use adso\Mascotas\libs\Controller;
+use adso\Mascotas\libs\Session;
 use Error;
 
 class RegisterController extends Controller
@@ -70,11 +71,17 @@ class RegisterController extends Controller
                         "titulo" => "registro",
                         "subtitulo" => "registrate",
                         "errors" =>  $error
-                    ];
-            
-                    $this -> view("register", $data);
+                    ];            
+                    $this -> view("login", $data);
+
                 }else{
-                    header("Location:".URL."/login");
+
+                    $data = $this -> model -> validate($correo, $password);
+
+                    $session = new Session();
+                    $session -> loginStar($data);
+
+                    header("Location:".URL."/admin");
                 }
 
             }else{
@@ -91,6 +98,7 @@ class RegisterController extends Controller
             header("Location:".URL."/register");
         }
     }
+    
     function email()
     {
         $response = array(
